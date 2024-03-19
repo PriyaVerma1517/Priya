@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoo Sphere - Sales</title>
+    <style>
+        /* Styles here */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        nav h1 {
+            margin: 0;
+        }
+
+        form {
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .bill-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>Zoo Sphere - Sales</h1>
+    </nav>
+    <form id="sales-form">
+        <label for="customer-name">Customer Name:</label>
+        <input type="text" id="customer-name" name="customer-name" required>
+
+        <label for="contact-number">Contact Number:</label>
+        <input type="tel" id="contact-number" name="contact-number" required>
+
+        <label for="event-name">Event Name:</label>
+        <input type="text" id="event-name" name="event-name" required>
+
+        <label for="event-place">Event Place:</label>
+        <input type="text" id="event-place" name="event-place" required>
+
+        <label for="event-price">Event Price per Ticket:</label>
+        <input type="text" id="event-price" name="event-price" required>
+
+        <label for="event-timing">Event Timing:</label>
+        <select id="event-timing" name="event-timing" required>
+            <option value="morning">Morning</option>
+            <option value="afternoon">Afternoon</option>
+            <option value="evening">Evening</option>
+        </select>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" required>
+
+        <label for="total-price">Total Price:</label>
+        <input type="text" id="total-price" name="total-price" readonly>
+
+        <div class="button-container">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <div class="bill-container" id="bill">
+        <!-- Information will be displayed here -->
+    </div>
+
+    <script>
+        // JavaScript here
+        document.getElementById("sales-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            var customerName = document.getElementById("customer-name").value;
+            var contactNumber = document.getElementById("contact-number").value;
+            var eventName = document.getElementById("event-name").value;
+            var eventPlace = document.getElementById("event-place").value;
+            var eventPrice = document.getElementById("event-price").value;
+            var eventTiming = document.getElementById("event-timing").value;
+            var quantity = document.getElementById("quantity").value;
+            var totalPrice = parseFloat(eventPrice) * parseInt(quantity);
+
+            document.getElementById("total-price").value = totalPrice;
+
+            var billContent = `
+                <h2>Bill Details</h2>
+                <p><strong>Customer Name:</strong> ${customerName}</p>
+                <p><strong>Contact Number:</strong> ${contactNumber}</p>
+                <p><strong>Event Name:</strong> ${eventName}</p>
+                <p><strong>Event Place:</strong> ${eventPlace}</p>
+                <p><strong>Event Price per Ticket:</strong> ${eventPrice}</p>
+                <p><strong>Event Timing:</strong> ${eventTiming}</p>
+                <p><strong>Quantity:</strong> ${quantity}</p>
+                <p><strong>Total Price:</strong> ${totalPrice}</p>
+            `;
+
+            document.getElementById("bill").innerHTML = billContent;
+        });
+    </script>
+</body>
+</html>
