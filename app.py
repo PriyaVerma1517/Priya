@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
 import bcrypt
+from flask import flash, redirect, render_template, request, url_for
+
 
 app = Flask(__name__)
 
@@ -28,22 +30,27 @@ with app.app_context():
 
 
 
-@app.route('/register',methods=['GET','POST'])
+  
+
+@app.route('/register', methods=['GET', 'POST'])
 def register():
-    if request.method == 'POST':
-        # handle request
-        name = request.form['name']
-        email = request.form['email']
-        password = request.form['password']
+      if request.method == 'POST':
+          name = request.form['name']
+          email = request.form['email']
+          password = request.form['password']
 
-        new_user = User(name=name,email=email,password=password)
-        db.session.add(new_user)
-        db.session.commit()
-        return redirect('/login')
+          existing_user = User.query.filter_by(email=email).first()
+          if existing_user:
+              flash('An account with this email already exists. Please use a different email.', 'error')
+              return redirect(url_for('register'))
 
+          new_user = User(name=name, email=email, password=password)
+          db.session.add(new_user)
+          db.session.commit()
+          flash('Registration successful. You can now log in.', 'success')
+          return redirect('/login')
 
-
-    return render_template('register.html')
+      return render_template('register.html')
 
 @app.route('/login',methods=['GET','POST'])
 def login():
