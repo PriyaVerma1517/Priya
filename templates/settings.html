@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zoo Sphere - Home</title>
+    <title>Zoo Sphere - Settings</title>
     <style>
         body {
             margin: 0;
@@ -74,19 +74,43 @@
 
         main {
             padding: 20px;
+            text-align: center;
         }
 
-        main img {
-            width: 100%;
-            max-width: 800px;
-            display: block;
-            margin: 0 auto; 
+        .settings-form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        @media only screen and (max-width: 600px) {
-            nav h1 {
-                font-size: 20px;
-            }
+        .settings-form h2 {
+            margin-top: 0;
+        }
+
+        .settings-form input[type="text"],
+        .settings-form input[type="email"],
+        .settings-form input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .settings-form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .settings-form button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
@@ -97,7 +121,7 @@
             <li><a href="home.html">Home</a></li>
             <li><a href="events.html">Events</a></li>
             <li><a href="sales.html">Sales</a></li>
-            <li><a href="settings.html">Settings</a></li>
+            <li><a href="#">Settings</a></li>
             <li class="dropdown">
                 <a href="#">Register/Login</a>
                 <div class="dropdown-content">
@@ -108,11 +132,16 @@
         </ul>
     </nav>
     <header>
-        <h1>Welcome to Zoo Sphere</h1>
+        <h1>Settings</h1>
     </header>
     <main>
-        <img src="home_image.jpg" alt="Welcome Image">
-        <!-- home page content goes here -->
+        <form class="settings-form">
+            <h2>Update Your Information</h2>
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <button>Update</button>
+        </form>
     </main>
 </body>
 </html>
