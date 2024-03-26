@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
 import bcrypt
@@ -70,10 +71,6 @@ def login():
 
 
 
-
-    
-
-
 @app.route('/logout')
 def logout():
     session.pop('email',None)
@@ -81,7 +78,8 @@ def logout():
 
 @app.route("/")
 def index():
-  return render_template("index.html")
+  return render_template("home.html")
+
 
 
 @app.route("/sales")

@@ -1,118 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zoo Sphere - Home</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zoo Homepage</title>
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
 
-        nav {
-            background-color: #333;
-            color: white;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+header {
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1000;
+}
 
-        nav h1 {
-            margin: 0;
-        }
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
 
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-        }
+#navbar {
+    list-style: none;
+    display: flex;
+}
 
-        nav ul li {
-            margin-left: 15px;
-        }
+#navbar li {
+    padding: 20px;
+    cursor: pointer;
+}
 
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-        }
+#logo {
+    font-weight: bold;
+    font-size: 24px;
+}
 
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
+#slideshow {
+    width: 100%;
+    height: 300px; /* Adjust as necessary */
+    background-color: #ddd; /* Placeholder color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #333;
-            min-width: 120px;
-            z-index: 1;
-        }
+.content-box {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+    width: calc(33% - 40px);
+    box-sizing: border-box;
+    float: left;
+}
 
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
+#logout {
+    clear: both;
+}
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+@media screen and (max-width: 768px) {
+    .content-box {
+        width: calc(50% - 40px);
+    }
+    #logout {
+        width: calc(100% - 40px);
+    }
+}
 
-        header {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 50px 0;
-        }
-
-        main {
-            padding: 20px;
-        }
-
-        main img {
-            width: 100%;
-            max-width: 800px;
-            display: block;
-            margin: 0 auto; 
-        }
-
-        @media only screen and (max-width: 600px) {
-            nav h1 {
-                font-size: 20px;
-            }
-        }
-    </style>
+@media screen and (max-width: 480px) {
+    .content-box {
+        width: calc(100% - 40px);
+    }
+    #navbar li {
+        padding: 10px;
+    }
+}
+</style>
 </head>
 <body>
+<header>
     <nav>
-        <h1>Zoo Sphere</h1>
-        <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="sales.html">Sales</a></li>
-            <li><a href="settings.html">Settings</a></li>
-            <li class="dropdown">
-                <a href="#">Register/Login</a>
-                <div class="dropdown-content">
-                    <a href="register.html">Register</a>
-                    <a href="login.html">Login</a>
-                </div>
-            </li>
+        <div id="logo">Logo</div>
+        <ul id="navbar">
+            <li>Home</li>
+            <li>About</li>
+            <li>Contact</li>
         </ul>
     </nav>
-    <header>
-        <h1>Welcome to Zoo Sphere</h1>
-    </header>
-    <main>
-        <img src="home_image.jpg" alt="Welcome Image">
-        <!-- home page content goes here -->
-    </main>
+</header>
+<section id="slideshow">
+    <!-- Placeholder for slideshow -->
+    <p>Slide show of images representing zoo, animals and what not</p>
+</section>
+<main>
+    <div class="content-box" id="events">Events</div>
+    <div class="content-box" id="sales">Sales</div>
+    <div class="content-box" id="logout">Log Out</div>
+</main>
 </body>
 </html>
